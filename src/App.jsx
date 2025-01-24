@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import ProjectPage from './components/ProjectPage';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import StarryBackground from './components/StarryBackground';
@@ -53,7 +54,7 @@ function App() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <Projects />
+          <ProjectPage />
         </Section>
         
         <Section
