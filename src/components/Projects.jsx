@@ -27,9 +27,9 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="min-h-screen py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none" />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="projects" className="relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2 
           className="text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"
           initial={{ opacity: 0, y: -20 }}
@@ -42,14 +42,14 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+              className="group bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="h-48 bg-gray-700 relative">
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent" />
+              <div className="h-48 bg-gray-800/50 relative overflow-hidden group-hover:bg-gray-700/50 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-blue-400">{project.title}</h3>

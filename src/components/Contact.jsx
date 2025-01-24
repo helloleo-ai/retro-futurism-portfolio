@@ -21,9 +21,9 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="min-h-screen py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="contact" className="relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2 
           className="text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500"
           initial={{ opacity: 0, y: -20 }}
@@ -44,7 +44,7 @@ const Contact = () => {
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
-                className="flex items-center space-x-4 bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700/50"
+                className="flex items-center space-x-4 bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -60,7 +60,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.div
-            className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700/50"
+            className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-8 border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}

@@ -8,17 +8,72 @@ import StarryBackground from './components/StarryBackground';
 
 const AppContainer = styled.div`
   min-height: 100vh;
-  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+`;
+
+const MainContent = styled.main`
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 4rem;
+  }
+`;
+
+const Section = styled(motion.div)`
+  margin: 8rem 0;
+  
+  @media (min-width: 768px) {
+    margin: 12rem 0;
+  }
 `;
 
 function App() {
   return (
     <AppContainer>
       <StarryBackground />
-      <Hero />
-      <Projects />
-      <Skills />
-      <Contact />
+      <MainContent>
+        <Section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Hero />
+        </Section>
+        
+        <Section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Projects />
+        </Section>
+        
+        <Section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Skills />
+        </Section>
+        
+        <Section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Contact />
+        </Section>
+      </MainContent>
     </AppContainer>
   );
 }
