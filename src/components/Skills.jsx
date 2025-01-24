@@ -45,7 +45,7 @@ const Skills = () => {
           Technical Skills
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -54,7 +54,7 @@ const Skills = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: categoryIndex * 0.2 }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-center text-blue-400">{category.title}</h3>
+              <h3 className="text-3xl font-bold mb-8 text-center text-blue-400">{category.title}</h3>
               <div className="space-y-6">
                 {category.skills.map((skill, index) => (
                   <motion.div
@@ -63,11 +63,11 @@ const Skills = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: (categoryIndex * 0.2) + (index * 0.1) }}
                   >
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-blue-400">{skill.level}%</span>
+                    <div className="flex justify-between mb-3">
+                      <span className="text-gray-300 text-lg">{skill.name}</span>
+                      <span className="text-blue-400 text-lg">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
                       <motion.div
                         className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
                         initial={{ width: 0 }}

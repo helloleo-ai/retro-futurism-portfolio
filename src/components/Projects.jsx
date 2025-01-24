@@ -38,7 +38,7 @@ const Projects = () => {
         >
           Featured Projects
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -48,12 +48,12 @@ const Projects = () => {
               transition={{ delay: index * 0.2 }}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="h-48 bg-gray-800/50 relative overflow-hidden group-hover:bg-gray-700/50 transition-all duration-500">
+              <div className="h-64 bg-gray-800/50 relative overflow-hidden group-hover:bg-gray-700/50 transition-all duration-500">
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-blue-400">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
+                <h3 className="text-2xl font-bold mb-3 text-blue-400">{project.title}</h3>
+                <p className="text-gray-300 mb-6 text-lg">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map(tech => (
                     <span key={tech} className="px-3 py-1 bg-blue-500/20 rounded-full text-blue-300 text-sm">

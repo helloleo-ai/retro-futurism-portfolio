@@ -65,31 +65,31 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.form className="space-y-6">
+            <motion.form className="space-y-8">
               <div>
-                <label htmlFor="name" className="block text-lg mb-2 text-gray-300">Name</label>
+                <label htmlFor="name" className="block text-lg mb-3 text-gray-300 font-medium">Name</label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full p-3 rounded-lg bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:outline-none backdrop-blur-sm"
+                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-lg mb-2 text-gray-300">Email</label>
+                <label htmlFor="email" className="block text-lg mb-3 text-gray-300 font-medium">Email</label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full p-3 rounded-lg bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:outline-none backdrop-blur-sm"
+                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
                   placeholder="your@email.com"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-lg mb-2 text-gray-300">Message</label>
+                <label htmlFor="message" className="block text-lg mb-3 text-gray-300 font-medium">Message</label>
                 <textarea
                   id="message"
-                  rows="5"
-                  className="w-full p-3 rounded-lg bg-gray-700/50 border border-gray-600 focus:border-blue-500 focus:outline-none backdrop-blur-sm"
+                  rows="6"
+                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
                   placeholder="Your message..."
                 ></textarea>
               </div>
