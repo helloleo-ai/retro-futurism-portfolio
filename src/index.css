@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --primary-dark: #0a0a0f;
-  --secondary-dark: #1a1a24;
+  --primary-dark: #030014;
+  --secondary-dark: #0a0a1f;
+  --accent-dark: #13131f;
   --neon-blue: #00f3ff;
   --neon-pink: #ff00ff;
+  --neon-purple: #bd00ff;
   --neon-green: #00ff9d;
   --chrome: #e8e8e8;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 * {
