@@ -136,9 +136,12 @@ function Navigation() {
     const href = e.currentTarget.getAttribute('href');
     const element = document.querySelector(href);
     if (element) {
-      const offset = element.offsetTop;
+      const navHeight = 80; // Height of the fixed navigation
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      
       window.scrollTo({
-        top: offset,
+        top: offsetPosition,
         behavior: 'smooth'
       });
       setIsOpen(false);

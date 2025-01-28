@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Add padding for fixed header */
 }
 
 body {
