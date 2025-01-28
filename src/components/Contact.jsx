@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ContactSection = styled.section`
   position: relative;
-  padding: 8rem 0;
+  padding: 4rem 0;
   overflow: hidden;
 `;
 

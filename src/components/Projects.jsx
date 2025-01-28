@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ProjectsSection = styled.section`
   position: relative;
-  padding: 8rem 0;
+  padding: 4rem 0;
   overflow: hidden;
 `;
 

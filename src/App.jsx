@@ -27,10 +27,10 @@ const MainContent = styled.main`
 `;
 
 const Section = styled(motion.div)`
-  margin: 8rem 0;
+  margin: 4rem 0;
   
   @media (min-width: 768px) {
-    margin: 12rem 0;
+    margin: 6rem 0;
   }
 `;
 
