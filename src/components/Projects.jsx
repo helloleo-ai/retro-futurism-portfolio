@@ -4,24 +4,24 @@ import { motion } from 'framer-motion'
 const Projects = () => {
   const projects = [
     {
-      title: "Project 1",
-      description: "A full-stack web application built with React and Node.js",
+      title: "My Projects",
+      description: "Description of My Projects",
       tech: ["React", "Node.js", "MongoDB"],
       image: "/project1.jpg",
       link: "#"
     },
     {
-      title: "Project 2", 
-      description: "Mobile-first responsive design with modern animations",
+      title: "Project 1",
+      description: "Description of Project 1",
       tech: ["React", "Tailwind CSS", "Framer Motion"],
-      image: "/project2.jpg",
+      image: "/project1.jpg",
       link: "#"
     },
     {
-      title: "Project 3",
-      description: "Real-time data visualization dashboard",
-      tech: ["TypeScript", "D3.js", "Firebase"],
-      image: "/project3.jpg",
+      title: "Project 1",
+      description: "Description of Project 1",
+      tech: ["React", "Node.js", "Express"],
+      image: "/project1.jpg",
       link: "#"
     }
   ]
@@ -38,7 +38,7 @@ const Projects = () => {
         >
           <span className="chrome-text">Featured Projects</span>
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
