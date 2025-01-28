@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Contact from './components/Contact';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import Testimonials from './components/Testimonials';
 import StarryBackground from './components/StarryBackground';
 
 const AppContainer = styled.div`
@@ -64,6 +65,15 @@ function App() {
           transition={{ duration: 0.8 }}
         >
           <Projects />
+        </Section>
+
+        <Section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Testimonials />
         </Section>
         
         <Section
