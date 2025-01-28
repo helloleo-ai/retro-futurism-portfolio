@@ -1,112 +1,225 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+
+const ContactSection = styled.section`
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+`;
+
+const ContactContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const ContactForm = styled(motion.form)`
+  background: rgba(13, 13, 13, 0.7);
+  border: 1px solid rgba(0, 255, 157, 0.1);
+  border-radius: 1rem;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+  }
+`;
+
+const InputGroup = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #00ff9d;
+  font-size: 1.1rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 255, 157, 0.05);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(0, 255, 157, 0.5);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 255, 157, 0.05);
+  border: 1px solid rgba(0, 255, 157, 0.2);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+  min-height: 150px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(0, 255, 157, 0.5);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+  }
+`;
+
+const SubmitButton = styled(motion.button)`
+  background: linear-gradient(90deg, #00ff9d, #00ffff);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+  }
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+`;
+
+const SocialLink = styled(motion.a)`
+  color: #00ff9d;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #00ffff;
+  }
+`;
 
 const Contact = () => {
-  const contactMethods = [
-    {
-      title: "Email",
-      value: "contact@example.com",
-      icon: "📧"
-    },
-    {
-      title: "LinkedIn",
-      value: "linkedin.com/in/yourprofile",
-      icon: "💼"
-    },
-    {
-      title: "GitHub",
-      value: "github.com/yourusername",
-      icon: "💻"
-    }
-  ]
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+  };
 
   return (
-    <section id="contact" className="relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2 
-          className="text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500"
-          initial={{ opacity: 0, y: -20 }}
+    <ContactSection>
+      <ContactContainer>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            fontSize: '3.5rem',
+            textAlign: 'center',
+            marginBottom: '4rem',
+            background: 'linear-gradient(to right, #00ff9d, #00ffff)',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+          }}
         >
           Get In Touch
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-2xl font-semibold text-blue-400 mb-6">Contact Information</h3>
-            {contactMethods.map((method, index) => (
-              <motion.div
-                key={method.title}
-                className="flex items-center space-x-4 bg-gray-900/40 backdrop-blur-sm p-6 rounded-xl border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <span className="text-2xl">{method.icon}</span>
-                <div>
-                  <h4 className="text-lg font-medium text-gray-300">{method.title}</h4>
-                  <p className="text-blue-400">{method.value}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        <ContactForm
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <InputGroup>
+            <Label>Name</Label>
+            <Input 
+              type="text" 
+              required 
+              placeholder="Enter your name"
+            />
+          </InputGroup>
 
-          <motion.div
-            className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-8 border border-gray-700/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.form className="space-y-8">
-              <div>
-                <label htmlFor="name" className="block text-lg mb-3 text-gray-300 font-medium">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-lg mb-3 text-gray-300 font-medium">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-lg mb-3 text-gray-300 font-medium">Message</label>
-                <textarea
-                  id="message"
-                  rows="6"
-                  className="w-full p-4 rounded-lg bg-gray-800/50 border border-gray-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none backdrop-blur-sm text-lg transition-all duration-300"
-                  placeholder="Your message..."
-                ></textarea>
-              </div>
-              <motion.button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send Message
-              </motion.button>
-            </motion.form>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  )
-}
+          <InputGroup>
+            <Label>Email</Label>
+            <Input 
+              type="email" 
+              required 
+              placeholder="Enter your email"
+            />
+          </InputGroup>
 
-export default Contact
+          <InputGroup>
+            <Label>Subject</Label>
+            <Input 
+              type="text" 
+              required 
+              placeholder="What's this about?"
+            />
+          </InputGroup>
+
+          <InputGroup>
+            <Label>Message</Label>
+            <TextArea 
+              required 
+              placeholder="Your message here..."
+            />
+          </InputGroup>
+
+          <SubmitButton
+            type="submit"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Send Message
+          </SubmitButton>
+
+          <SocialLinks>
+            <SocialLink 
+              href="https://github.com/yourusername" 
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <i className="fab fa-github"></i>
+            </SocialLink>
+            <SocialLink 
+              href="https://linkedin.com/in/yourprofile" 
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <i className="fab fa-linkedin"></i>
+            </SocialLink>
+            <SocialLink 
+              href="mailto:your.email@example.com"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <i className="fas fa-envelope"></i>
+            </SocialLink>
+          </SocialLinks>
+        </ContactForm>
+      </ContactContainer>
+    </ContactSection>
+  );
+};
+
+export default Contact;
