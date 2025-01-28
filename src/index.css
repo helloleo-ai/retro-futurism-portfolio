@@ -11,6 +11,14 @@
   --chrome: #e8e8e8;
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.08);
+  --retro-grid: repeating-linear-gradient(
+    transparent,
+    transparent 2px,
+    rgba(0, 243, 255, 0.1) 2px,
+    rgba(0, 243, 255, 0.1) 4px
+  );
+  --retro-glow: 0 0 20px rgba(0, 243, 255, 0.5);
+  --retro-border: 1px solid rgba(0, 243, 255, 0.3);
 }
 
 * {
