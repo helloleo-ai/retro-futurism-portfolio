@@ -122,6 +122,20 @@ function Hero() {
       >
         FULL STACK DEVELOPER
       </Subtitle>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        style={{
+          color: '#a0a0a0',
+          maxWidth: '600px',
+          marginBottom: '3rem',
+          fontSize: '1.1rem',
+          lineHeight: '1.6'
+        }}
+      >
+        Crafting immersive digital experiences with cutting-edge technology and futuristic design
+      </motion.p>
       <CTAButton
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
