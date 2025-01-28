@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 const ContactSection = styled.section`
+  id="contact"
   position: relative;
   padding: 4rem 0;
   overflow: hidden;
@@ -121,7 +122,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactSection>
+    <ContactSection id="contact">
       <ContactContainer>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

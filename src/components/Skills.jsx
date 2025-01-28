@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 const SkillsSection = styled.section`
+  id="skills"
   position: relative;
   padding: 4rem 0;
   overflow: hidden;
@@ -96,7 +97,7 @@ const Skills = () => {
   ];
 
   return (
-    <SkillsSection>
+    <SkillsSection id="skills">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
