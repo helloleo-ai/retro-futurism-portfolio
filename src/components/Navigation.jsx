@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Nav = styled.nav`
   position: fixed;
@@ -17,6 +18,37 @@ const NavList = styled.ul`
   display: flex;
   gap: 2rem;
   list-style: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MobileNav = styled(motion.div)`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(3, 0, 20, 0.95);
+  padding: 2rem;
+  z-index: 99;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const MobileNavList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
 `;
 
 const NavItem = styled(motion.li)`
@@ -31,6 +63,10 @@ const NavLink = styled.a`
   letter-spacing: 0.1em;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 
   &:hover {
     color: var(--neon-blue);
@@ -55,24 +91,110 @@ const NavLink = styled.a`
   }
 `;
 
+const MenuButton = styled.button`
+  display: none;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--chrome);
+  z-index: 100;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  div {
+    width: 24px;
+    height: 2px;
+    background-color: var(--chrome);
+    margin: 5px 0;
+    transition: 0.3s;
+
+    &:nth-child(1) {
+      transform: ${({ isOpen }) => isOpen ? 'rotate(-45deg) translate(-5px, 6px)' : 'none'};
+    }
+    &:nth-child(2) {
+      opacity: ${({ isOpen }) => isOpen ? '0' : '1'};
+    }
+    &:nth-child(3) {
+      transform: ${({ isOpen }) => isOpen ? 'rotate(45deg) translate(-5px, -6px)' : 'none'};
+    }
+  }
+`;
+
 function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = element.offsetTop;
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <Nav>
-      <NavList>
-        <NavItem whileHover={{ y: -2 }}>
-          <NavLink href="#home">HOME</NavLink>
-        </NavItem>
-        <NavItem whileHover={{ y: -2 }}>
-          <NavLink href="#projects">PROJECTS</NavLink>
-        </NavItem>
-        <NavItem whileHover={{ y: -2 }}>
-          <NavLink href="#skills">SKILLS</NavLink>
-        </NavItem>
-        <NavItem whileHover={{ y: -2 }}>
-          <NavLink href="#contact">CONTACT</NavLink>
-        </NavItem>
-      </NavList>
-    </Nav>
+    <>
+      <Nav>
+        <NavList>
+          <NavItem whileHover={{ y: -2 }}>
+            <NavLink href="#home" onClick={handleClick}>HOME</NavLink>
+          </NavItem>
+          <NavItem whileHover={{ y: -2 }}>
+            <NavLink href="#projects" onClick={handleClick}>PROJECTS</NavLink>
+          </NavItem>
+          <NavItem whileHover={{ y: -2 }}>
+            <NavLink href="#skills" onClick={handleClick}>SKILLS</NavLink>
+          </NavItem>
+          <NavItem whileHover={{ y: -2 }}>
+            <NavLink href="#contact" onClick={handleClick}>CONTACT</NavLink>
+          </NavItem>
+        </NavList>
+        <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+          <div />
+          <div />
+          <div />
+        </MenuButton>
+      </Nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <MobileNav
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+          >
+            <MobileNavList>
+              <NavItem>
+                <NavLink href="#home" onClick={handleClick}>HOME</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#projects" onClick={handleClick}>PROJECTS</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#skills" onClick={handleClick}>SKILLS</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#contact" onClick={handleClick}>CONTACT</NavLink>
+              </NavItem>
+            </MobileNavList>
+          </MobileNav>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
