@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Navigation from './Navigation';
 
 const HeroSection = styled.section`
   height: 80vh;
@@ -103,7 +104,8 @@ const CTAButton = styled(motion.button)`
 
 function Hero() {
   return (
-    <HeroSection>
+    <HeroSection id="home">
+      <Navigation />
       <Title
         className="chrome-text"
         initial={{ opacity: 0, y: 20 }}
