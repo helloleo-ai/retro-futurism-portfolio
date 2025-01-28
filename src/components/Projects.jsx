@@ -29,7 +29,7 @@ const Projects = () => {
   return (
     <section id="projects" className="relative py-20">
       <div className="absolute inset-0" style={{ background: 'var(--retro-grid)' }} />
-      <div className="max-w-7xl mx-auto relative z-10 px-4">
+      <div className="container mx-auto relative z-10">
         <motion.h2 
           className="text-6xl font-bold text-center mb-20 neon-text"
           initial={{ opacity: 0, y: -20 }}
@@ -38,7 +38,7 @@ const Projects = () => {
         >
           <span className="chrome-text">Featured Projects</span>
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto px-4 sm:px-6 lg:px-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
