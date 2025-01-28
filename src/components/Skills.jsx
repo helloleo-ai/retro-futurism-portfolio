@@ -1,89 +1,163 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+
+const SkillsSection = styled.section`
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+`;
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const SkillCard = styled(motion.div)`
+  background: rgba(13, 13, 13, 0.7);
+  border: 1px solid rgba(0, 255, 157, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+  }
+`;
+
+const CategoryTitle = styled.h3`
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #00ff9d, #00ffff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
+const SkillBar = styled(motion.div)`
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 255, 157, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  position: relative;
+`;
+
+const SkillProgress = styled(motion.div)`
+  height: 100%;
+  background: linear-gradient(90deg, #00ff9d, #00ffff);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+`;
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend",
+      title: "Frontend Development",
       skills: [
-        { name: "React", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "TypeScript", level: 80 },
-        { name: "HTML/CSS", level: 95 },
+        { name: "React & React Native", level: 90 },
+        { name: "JavaScript/TypeScript", level: 85 },
+        { name: "Modern CSS & Animation", level: 88 },
+        { name: "Web Performance", level: 82 }
       ]
     },
     {
-      title: "Backend",
+      title: "Backend Development",
       skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Python", level: 80 },
-        { name: "SQL", level: 75 },
-        { name: "MongoDB", level: 70 },
+        { name: "Node.js & Express", level: 85 },
+        { name: "Database Design", level: 80 },
+        { name: "API Architecture", level: 87 },
+        { name: "Cloud Services", level: 78 }
       ]
     },
     {
-      title: "Tools & Others",
+      title: "Development Tools",
       skills: [
-        { name: "Git", level: 90 },
-        { name: "AWS", level: 75 },
-        { name: "Docker", level: 70 },
-        { name: "CI/CD", level: 65 },
+        { name: "Git & Version Control", level: 92 },
+        { name: "CI/CD Pipelines", level: 83 },
+        { name: "Testing & Debug", level: 85 },
+        { name: "Dev Environment", level: 88 }
       ]
     }
-  ]
+  ];
 
   return (
-    <section id="skills" className="relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-transparent pointer-events-none" />
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2 
-          className="text-5xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Technical Skills
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700/30 hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: categoryIndex * 0.2 }}
-            >
-              <h3 className="text-3xl font-bold mb-8 text-center text-blue-400">{category.title}</h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (categoryIndex * 0.2) + (index * 0.1) }}
-                  >
-                    <div className="flex justify-between mb-3">
-                      <span className="text-gray-300 text-lg">{skill.name}</span>
-                      <span className="text-blue-400 text-lg">{skill.level}%</span>
-                    </div>
-                    <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
-                        initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: (categoryIndex * 0.2) + (index * 0.1) }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
+    <SkillsSection>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          fontSize: '3.5rem',
+          textAlign: 'center',
+          marginBottom: '4rem',
+          background: 'linear-gradient(to right, #00ff9d, #00ffff)',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent'
+        }}
+      >
+        Technical Expertise
+      </motion.h2>
+      
+      <SkillsGrid>
+        {skillCategories.map((category, categoryIndex) => (
+          <SkillCard
+            key={category.title}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: categoryIndex * 0.2 }}
+            whileHover={{ 
+              scale: 1.02,
+              borderColor: 'rgba(0, 255, 157, 0.3)',
+              transition: { duration: 0.2 }
+            }}
+          >
+            <CategoryTitle>{category.title}</CategoryTitle>
+            {category.skills.map((skill, index) => (
+              <div key={skill.name}>
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between',
+                  marginBottom: '0.5rem',
+                  color: '#a0a0a0'
+                }}>
+                  <span>{skill.name}</span>
+                  <span style={{ color: '#00ff9d' }}>{skill.level}%</span>
+                </div>
+                <SkillBar>
+                  <SkillProgress
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 1,
+                      delay: (categoryIndex * 0.2) + (index * 0.1),
+                      ease: "easeOut"
+                    }}
+                  />
+                </SkillBar>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+            ))}
+          </SkillCard>
+        ))}
+      </SkillsGrid>
+    </SkillsSection>
+  );
+};
 
-export default Skills
+export default Skills;
