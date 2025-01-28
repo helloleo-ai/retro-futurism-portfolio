@@ -162,6 +162,9 @@ function Navigation() {
             <NavLink href="#skills" onClick={handleClick}>SKILLS</NavLink>
           </NavItem>
           <NavItem whileHover={{ y: -2 }}>
+            <NavLink href="#testimonials" onClick={handleClick}>TESTIMONIALS</NavLink>
+          </NavItem>
+          <NavItem whileHover={{ y: -2 }}>
             <NavLink href="#contact" onClick={handleClick}>CONTACT</NavLink>
           </NavItem>
         </NavList>
@@ -189,6 +192,9 @@ function Navigation() {
               </NavItem>
               <NavItem>
                 <NavLink href="#skills" onClick={handleClick}>SKILLS</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#testimonials" onClick={handleClick}>TESTIMONIALS</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#contact" onClick={handleClick}>CONTACT</NavLink>
