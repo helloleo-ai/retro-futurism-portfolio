@@ -1,87 +1,124 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+
+const ProjectsSection = styled.section`
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+`;
+
+const ProjectGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const ProjectCard = styled(motion.div)`
+  background: rgba(13, 13, 13, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+`;
+
+const ProjectTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #00ff9d, #00ffff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+`;
 
 const Projects = () => {
   const projects = [
     {
-      title: "My Projects",
-      description: "Description of My Projects",
-      tech: ["React", "Node.js", "MongoDB"],
-      image: "/project1.jpg",
-      link: "#"
+      title: "Neural Network Visualizer",
+      description: "Interactive 3D visualization of neural networks with real-time training data representation.",
+      tech: ["Three.js", "TensorFlow.js", "WebGL"],
     },
     {
-      title: "Project 1",
-      description: "Description of Project 1",
-      tech: ["React", "Tailwind CSS", "Framer Motion"],
-      image: "/project1.jpg",
-      link: "#"
+      title: "Quantum Computing Simulator",
+      description: "Browser-based quantum circuit simulator with visual programming interface.",
+      tech: ["React", "WebAssembly", "Python"],
     },
     {
-      title: "Project 1",
-      description: "Description of Project 1",
-      tech: ["React", "Node.js", "Express"],
-      image: "/project1.jpg",
-      link: "#"
+      title: "AI Music Composer",
+      description: "Generate original music using machine learning algorithms and synthesizer integration.",
+      tech: ["TensorFlow", "Web Audio API", "Node.js"],
     }
-  ]
+  ];
 
   return (
-    <section id="projects" className="relative py-20">
-      <div className="absolute inset-0" style={{ background: 'var(--retro-grid)' }} />
-      <div className="container mx-auto relative z-10">
-        <motion.h2 
-          className="text-6xl font-bold text-center mb-20 neon-text"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="chrome-text">Featured Projects</span>
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              className="group relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--neon-blue)] to-[var(--neon-purple)] opacity-20 blur-lg group-hover:opacity-30 transition-opacity duration-500" />
-              <div className="relative backdrop-blur-sm border-2 border-[var(--neon-blue)] rounded-lg overflow-hidden"
-                   style={{ boxShadow: 'var(--retro-glow)' }}>
-                <div className="h-48 bg-[var(--accent-dark)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[var(--retro-grid)] opacity-30" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary-dark)] to-transparent" />
-                </div>
-                <div className="p-6 bg-[var(--primary-dark)]/90">
-                  <h3 className="text-2xl font-bold mb-3 text-[var(--neon-blue)] tracking-wider">{project.title}</h3>
-                  <p className="text-[var(--chrome)] mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map(tech => (
-                      <span key={tech} 
-                            className="px-3 py-1 border border-[var(--neon-blue)] rounded-full text-[var(--neon-blue)] text-sm backdrop-blur-sm">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <motion.a
-                    href={project.link}
-                    className="inline-block px-6 py-2 bg-[var(--neon-blue)]/10 border border-[var(--neon-blue)] text-[var(--neon-blue)] rounded-lg hover:bg-[var(--neon-blue)]/20 transition-colors duration-300"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    View Project
-                  </motion.a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+    <ProjectsSection>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          fontSize: '3.5rem',
+          textAlign: 'center',
+          marginBottom: '4rem',
+          background: 'linear-gradient(to right, #00ff9d, #00ffff)',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent'
+        }}
+      >
+        Featured Projects
+      </motion.h2>
+      
+      <ProjectGrid>
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.title}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+          >
+            <ProjectTitle>{project.title}</ProjectTitle>
+            <p style={{ color: '#a0a0a0', marginBottom: '1.5rem' }}>
+              {project.description}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {project.tech.map((tech) => (
+                <span
+                  key={tech}
+                  style={{
+                    padding: '0.5rem 1rem',
+                    background: 'rgba(0, 255, 157, 0.1)',
+                    border: '1px solid rgba(0, 255, 157, 0.2)',
+                    borderRadius: '2rem',
+                    color: '#00ff9d',
+                    fontSize: '0.875rem'
+                  }}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </ProjectCard>
+        ))}
+      </ProjectGrid>
+    </ProjectsSection>
+  );
+};
 
-export default Projects
+export default Projects;
